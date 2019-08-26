@@ -1,11 +1,15 @@
-import React, { Component } from "react";
-import Provider from "./AppProvider";
-import Header from "./features/Common/Header";
+import * as React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Home from "./features/Home";
+import Dashboard from "./features/Dashboard";
 
 export default function App() {
   return (
-    <Provider.AppProvider>
-      <Header />
-    </Provider.AppProvider>
-  );
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Home}/>
+        <Route exact path="/dashboard" component={Dashboard} />
+      </Switch>
+    </Router>
+  )
 }

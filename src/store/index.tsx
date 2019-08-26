@@ -1,4 +1,4 @@
-import { createContext, useReducer} from "react";
+import * as React from 'react';
 
 interface IActionType {
   type: string
@@ -6,31 +6,20 @@ interface IActionType {
 }
 
 interface IInitializeReducersProps {
-  initialState: unknown
-  reducerFn: (state: unknown, action: IActionType) => unknown
+  initialState?: any
+  reducerFn: (state: any, action?: IActionType) => any
+  children: JSX.Element
 }
 
-interface IInitializeReducersReturn {
-  state: unknown
-  dispatch: (action: IActionType) => void
-}
+export const Store = React.createContext({}); 
 
-interface IInitializeReducersProps {
-  initialState: unknown
-  reducerFn: (state: unknown, action: IActionType) => unknown
-  children: React.ReactNode[]
-}
-
-interface IInitializeReducersReturn {
-  state: unknown
-  dispatch: (action: IActionType) => void
-}
-
-export const Store = createContext({}); 
-
-export function StoreProvider(props: IInitializeReducersProps): unknown {
+export function StoreProvider(props: IInitializeReducersProps): any {
   const { initialState, reducerFn, children } = props; 
-  const [state, dispatch] = useReducer(reducerFn, initialState);
+  const [state, dispatch] = React.useReducer(reducerFn, initialState);
 
-  return <Store.Provider value={{state, dispatch}}>{children}</Store.Provider>
+  return (
+    <Store.Provider value={{state, dispatch}}>
+      {children}
+    </Store.Provider>
+  )
 }
