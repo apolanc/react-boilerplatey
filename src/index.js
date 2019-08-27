@@ -7,7 +7,7 @@ import * as serviceWorker from "./serviceWorker";
 import combinedReducers from './reducers';
 
 const WrappedApp = () => (
-  <StoreProvider reducerFn={combinedReducers} initialState={{}}>
+  <StoreProvider reducers={combinedReducers}>
     <App />
   </StoreProvider>
 )

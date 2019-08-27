@@ -1,7 +1,7 @@
 const API_URL =
   'https://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes';
 
-export const fetchHomeAction = async (dispatch: any) => {
+export const fetchHomeAction = (dispatch: any) => async () => {
   const data = await fetch(API_URL);
   const dataJSON = await data.json();
   return dispatch({
@@ -10,7 +10,7 @@ export const fetchHomeAction = async (dispatch: any) => {
   });
 };
 
-export const toggleFavAction = (episode: any, state: any, dispatch: any) => {
+export const toggleFavAction = (dispatch: any) => (episode: any, state: any) => {
   const episodeInFavourites = state.favourites.includes(episode);
   let dispatchObj = {
     type: 'ADD_HOME',

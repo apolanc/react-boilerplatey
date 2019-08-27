@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Store } from '../../store';
-import { toggleDashboardAction, fetchDashboardAction } from './actions'
+import * as actions from './actions'
+import { withStateAndDispatch } from '../../tools';
 
-export default function Dashboard() {
+function Dashboard() {
   const { state, dispatch }: any = React.useContext(Store);
 
-  React.useEffect(() => {
-    fetchDashboardAction(dispatch)
+  React.useEffect(() => {debugger
+    // fetchDashboardAction(dispatch)
   }, [])
   
   return (
@@ -17,3 +18,5 @@ export default function Dashboard() {
     </>
   )
 }
+
+export default withStateAndDispatch(actions)(Dashboard)

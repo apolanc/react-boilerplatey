@@ -1,4 +1,6 @@
-export default function reducer(state: any, action: any) {
+import { IActionType, IHomeState } from "../../typings";
+
+export default function reducer(state: IHomeState, action: IActionType) {
   switch (action.type) {
     case 'FETCH_HOME':
       return { ...state, episodes: action.payload };

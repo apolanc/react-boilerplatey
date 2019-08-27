@@ -1,4 +1,6 @@
-export default function reducer(state: any, action: any) {
+import { IActionType, IDashboardState } from "../../typings";
+
+export default function reducer(state: IDashboardState, action: IActionType) {
   switch (action.type) {
     case 'FETCH_DASHBOARD':
       return { ...state, episodes: action.payload };
